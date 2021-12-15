@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gallery {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 300px);
+    grid-template-rows: repeat(3, 300px);
+    grid-template-areas:
+        "image1 image2 image2"
+        "image3 image2 image2"
+        "image4 image4 image4"
+    ;
+    margin: 3rem auto;
+    height: 930px;
+    width: 930px;
+}
+
+.gallery-image {
+    height: 100%;
+    width: 100%;
+    outline-offset: 0.1rem;
+    transition: 0.4s ease-in-out;
+}
+
+.gallery-image:hover {
+    outline: 1rem solid rgba(236, 161, 95, 0.5);
+    transform: scale(1.1);
+}
+
+.gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image1 {
+    grid-area: image1;
+}
+
+.image2 {
+    grid-area: image2;
+}
+
+.image3 {
+    grid-area: image3;
+}
+
+.image4 {
+    grid-area: image4;
+}
+
+@media (max-width: 568px) {
+    body {
+        background-color: black;
+    }
+
+
+.gallery {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: reapeat(4, 300px);
+    grid-template-areas:
+        "wish1"
+        "wish2"
+        "wish3"
+        "wish4"
+    ;
+    width: 100%;
+}}
