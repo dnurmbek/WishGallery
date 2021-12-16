@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const multer = require('multer');
-const { StringDecoder } = require('string_decoder');
+let last = 0;
 
 mongoose.connect('mongodb://localhost:27017/wishingDB', { useUnifiedTopology: true })
 
@@ -44,9 +44,21 @@ app.get('/random', (req, res) => {
     
     wishModel.find()
         .then(document => {
+            console.log(`Viimane väärtus: ${last}`);
             var random = Math.floor(Math.random() * (document.length));
-            console.log(random);
+            console.log(`Genereeris: ${random}`);
+            if (random == last && (random+1) != document.length){
+                random +=1;
+                console.log(`Muudetud väärtus: ${random}`);
+            }
+            else if(random == last && (random+1) == document.length){
+                random -=1;
+                console.log(`Muudetud väärtus: ${random}, et vältida kordust:`);
+            }
+            console.log("\n");
             res.render('random',{item: document[random]});
+            // console.log(document[random]);
+            last = random;
         });
 });
 
