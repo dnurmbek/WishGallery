@@ -10,15 +10,14 @@
 </head>
 
 <body>
+    <div class=gallery>
     
-    
-        <% item.forEach(element => { %>
-             <%= element.wishDescription%> 
-                
-                    <img src="<%= element.image %>" alt="<%= element.wishDescription %>" />
+             <%= item.wishDescription%> 
+                <div class="gallery-image">
+                    <img src="<%= item.image %>" alt="<%= item.wishDescription %>" />
               
-       <% })%>
-    
+                </div>
+                </div>
             
 </body>
 

@@ -34,12 +34,21 @@ let upload = multer({
 app.get('/', (req, res) => {
     wishModel.find()
         .then(document => {
-            console.log(document[0]);
+            console.log(document);
             
             res.render('index',{item: document});
         });
 });
 
+app.get('/random', (req, res) => {
+    
+    wishModel.find()
+        .then(document => {
+            var random = Math.floor(Math.random() * (document.length));
+            console.log(random);
+            res.render('random',{item: document[random]});
+        });
+});
 
 
 
